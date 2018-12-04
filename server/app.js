@@ -1,6 +1,7 @@
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const schema = require('./schema/schema');
+const keys = require("./config/keys");
 const mongoose = require('mongoose');
 const cors = require('cors');
 
@@ -10,7 +11,7 @@ const app = express();
 app.use(cors());
 
 //connect to mlab db
-mongoose.connect('mongodb://admin:admin007@ds115472.mlab.com:15472/gql-bookrater');
+mongoose.connect(keys.mongoURI);
 mongoose.connection.once('open', () => {
     console.log('connected to database');
 });
